@@ -25,7 +25,7 @@
             <!-- the navigation itself -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Link 1</a>
+                <a class="nav-link" href="/add-article">add an article</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Link 2</a>
@@ -76,14 +76,21 @@
         <!-- the right side of the website where content is placed -->
         <div class="col-md-9" style="padding: 0; padding-top: 20px;">
 
+        <!-- if there's at least 1 article in the database -->
+        {% if articles is defined %}
+
+          <!-- going through all the articles found -->
+          {% for article in articles %}
+
           <!-- a box with content, containing the poster info, a picture, a header and text -->
           <div class="content-box">
+
             <!-- poster info (it's name, picture, date of posting) -->
             <div class="poster-info">
               <div class="poster-picture"></div>
               <div class="block">
                 <div class="poster-name">
-                  Viktor Fedorov
+                  {{ article.author }}
                 </div>
                 <div class="poster-date">
                   June 23, 1998
@@ -91,25 +98,17 @@
               </div>
             </div>
 
-            <div class="content-picture"></div>
+            <div class="content-picture">NO IMAGE PROVIDED</div>
 
-            <h1 style="padding-top: 10px">Header</h1>
+            <h1 style="padding-top: 10px">{{ article.article_title }}</h1>
 
             <p style="text-align: justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla et urna nulla. Mauris et tortor pharetra, convallis
-              magna at, finibus ipsum. Ut augue ex, ultricies eget urna ac,
-              gravida porttitor lorem. Quisque sollicitudin molestie aliquet.
-              Quisque eu egestas massa, non gravida eros. Morbi porttitor
-              mollis augue a maximus. Nulla quis risus eget massa placerat
-              finibus at in augue.Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla et urna nulla. Mauris et tortor pharetra,
-              convallis magna at, finibus ipsum. Ut augue ex, ultricies eget urna
-              ac, gravida porttitor lorem. Quisque sollicitudin molestie aliquet.
-              Quisque eu egestas massa, non gravida eros. Morbi porttitor mollis
-              augue a maximus. Nulla quis risus eget massa placerat finibus at in augue.
+              {{ article.article_contents | raw }}
             </p>
           </div>
+
+            {% endfor %}
+          {% endif %}
 
         </div>
       </div>

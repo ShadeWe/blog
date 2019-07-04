@@ -1,9 +1,8 @@
 # config/routes.yaml
 
-# the "app_lucky_number" route name is not important yet
 mainpage:
     path: /
     controller: App\Controller\HomeController::mainpage
 newarticle:
     path: /add-article
-    controller: App\Controller\NewArticleController::newarticle
+    controller: App\Controller\NewArticleController::index
